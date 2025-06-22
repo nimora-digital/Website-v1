@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "vendor-chunks/run-applescript";
+exports.ids = ["vendor-chunks/run-applescript"];
+exports.modules = {
+
+/***/ "(rsc)/./node_modules/run-applescript/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/run-applescript/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   runAppleScript: () => (/* binding */ runAppleScript),\n/* harmony export */   runAppleScriptSync: () => (/* binding */ runAppleScriptSync)\n/* harmony export */ });\n/* harmony import */ var node_process__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! node:process */ \"node:process\");\n/* harmony import */ var node_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! node:util */ \"node:util\");\n/* harmony import */ var node_child_process__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! node:child_process */ \"node:child_process\");\n\n\n\n\nconst execFileAsync = (0,node_util__WEBPACK_IMPORTED_MODULE_1__.promisify)(node_child_process__WEBPACK_IMPORTED_MODULE_2__.execFile);\n\nasync function runAppleScript(script, {humanReadableOutput = true} = {}) {\n\tif (node_process__WEBPACK_IMPORTED_MODULE_0__.platform !== 'darwin') {\n\t\tthrow new Error('macOS only');\n\t}\n\n\tconst outputArguments = humanReadableOutput ? [] : ['-ss'];\n\n\tconst {stdout} = await execFileAsync('osascript', ['-e', script, outputArguments]);\n\treturn stdout.trim();\n}\n\nfunction runAppleScriptSync(script, {humanReadableOutput = true} = {}) {\n\tif (node_process__WEBPACK_IMPORTED_MODULE_0__.platform !== 'darwin') {\n\t\tthrow new Error('macOS only');\n\t}\n\n\tconst outputArguments = humanReadableOutput ? [] : ['-ss'];\n\n\tconst stdout = (0,node_child_process__WEBPACK_IMPORTED_MODULE_2__.execFileSync)('osascript', ['-e', script, ...outputArguments], {\n\t\tencoding: 'utf8',\n\t\tstdio: ['ignore', 'pipe', 'ignore'],\n\t\ttimeout: 500,\n\t});\n\n\treturn stdout.trim();\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvcnVuLWFwcGxlc2NyaXB0L2luZGV4LmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQW1DO0FBQ0M7QUFDc0I7O0FBRTFELHNCQUFzQixvREFBUyxDQUFDLHdEQUFROztBQUVqQyx1Q0FBdUMsNEJBQTRCLElBQUk7QUFDOUUsS0FBSyxrREFBZ0I7QUFDckI7QUFDQTs7QUFFQTs7QUFFQSxRQUFRLFFBQVE7QUFDaEI7QUFDQTs7QUFFTyxxQ0FBcUMsNEJBQTRCLElBQUk7QUFDNUUsS0FBSyxrREFBZ0I7QUFDckI7QUFDQTs7QUFFQTs7QUFFQSxnQkFBZ0IsZ0VBQVk7QUFDNUI7QUFDQTtBQUNBO0FBQ0EsRUFBRTs7QUFFRjtBQUNBIiwic291cmNlcyI6WyIvVXNlcnMva2lyYW5zZWVocmEvRGVza3RvcC9Db2RpbmcgUHJvamVjdHMvTmltb3JhTFREL25pbW9yYS1kaWdpdGFsL25vZGVfbW9kdWxlcy9ydW4tYXBwbGVzY3JpcHQvaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHByb2Nlc3MgZnJvbSAnbm9kZTpwcm9jZXNzJztcbmltcG9ydCB7cHJvbWlzaWZ5fSBmcm9tICdub2RlOnV0aWwnO1xuaW1wb3J0IHtleGVjRmlsZSwgZXhlY0ZpbGVTeW5jfSBmcm9tICdub2RlOmNoaWxkX3Byb2Nlc3MnO1xuXG5jb25zdCBleGVjRmlsZUFzeW5jID0gcHJvbWlzaWZ5KGV4ZWNGaWxlKTtcblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHJ1bkFwcGxlU2NyaXB0KHNjcmlwdCwge2h1bWFuUmVhZGFibGVPdXRwdXQgPSB0cnVlfSA9IHt9KSB7XG5cdGlmIChwcm9jZXNzLnBsYXRmb3JtICE9PSAnZGFyd2luJykge1xuXHRcdHRocm93IG5ldyBFcnJvcignbWFjT1Mgb25seScpO1xuXHR9XG5cblx0Y29uc3Qgb3V0cHV0QXJndW1lbnRzID0gaHVtYW5SZWFkYWJsZU91dHB1dCA/IFtdIDogWyctc3MnXTtcblxuXHRjb25zdCB7c3Rkb3V0fSA9IGF3YWl0IGV4ZWNGaWxlQXN5bmMoJ29zYXNjcmlwdCcsIFsnLWUnLCBzY3JpcHQsIG91dHB1dEFyZ3VtZW50c10pO1xuXHRyZXR1cm4gc3Rkb3V0LnRyaW0oKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHJ1bkFwcGxlU2NyaXB0U3luYyhzY3JpcHQsIHtodW1hblJlYWRhYmxlT3V0cHV0ID0gdHJ1ZX0gPSB7fSkge1xuXHRpZiAocHJvY2Vzcy5wbGF0Zm9ybSAhPT0gJ2RhcndpbicpIHtcblx0XHR0aHJvdyBuZXcgRXJyb3IoJ21hY09TIG9ubHknKTtcblx0fVxuXG5cdGNvbnN0IG91dHB1dEFyZ3VtZW50cyA9IGh1bWFuUmVhZGFibGVPdXRwdXQgPyBbXSA6IFsnLXNzJ107XG5cblx0Y29uc3Qgc3Rkb3V0ID0gZXhlY0ZpbGVTeW5jKCdvc2FzY3JpcHQnLCBbJy1lJywgc2NyaXB0LCAuLi5vdXRwdXRBcmd1bWVudHNdLCB7XG5cdFx0ZW5jb2Rpbmc6ICd1dGY4Jyxcblx0XHRzdGRpbzogWydpZ25vcmUnLCAncGlwZScsICdpZ25vcmUnXSxcblx0XHR0aW1lb3V0OiA1MDAsXG5cdH0pO1xuXG5cdHJldHVybiBzdGRvdXQudHJpbSgpO1xufVxuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6WzBdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/run-applescript/index.js\n");
+
+/***/ })
+
+};
+;
