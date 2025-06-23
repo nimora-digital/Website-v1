@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Header() {
@@ -35,10 +35,9 @@ export default function Header() {
         </Link>
 
         <nav className="flex space-x-8 text-sm text-white font-semibold tracking-wide">
-          {/* Link href="/portfolio" className="hover:text-gold hover:underline transition-all">
-            ##Portfolio
-          </Link>
-          */}
+          {/* <Link href="/portfolio" className="hover:text-gold hover:underline transition-all">
+            Portfolio
+          </Link> */}
           <Link href="/faq" className="hover:text-gold hover:underline transition-all">
             FAQ
           </Link>
@@ -66,13 +65,12 @@ export default function Header() {
                   <Link href="/portfolio" className="block hover:text-gold">
                     Portfolio
                   </Link>
-                  <a
-                    href="/#quote"
+                  <button
                     onClick={handleQuoteClick}
-                    className="block hover:text-gold"
+                    className="block text-left w-full hover:text-gold"
                   >
                     Schedule a Quote
-                  </a>
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>

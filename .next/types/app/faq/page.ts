@@ -1,4 +1,4 @@
-// File: /Users/kiranseehra/Desktop/Coding Projects/NimoraLTD/nimora-digital/app/faq/page.tsx
+// File: D:\Desktop\nimorawebsite-master\app\faq\page.tsx
 import * as entry from '../../../../app/faq/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,4 +1,4 @@
-// File: /Users/kiranseehra/Desktop/Coding Projects/NimoraLTD/nimora-digital/app/api/sendQuoteEmail/route.ts
+// File: D:\Desktop\nimorawebsite-master\app\api\sendQuoteEmail\route.ts
 import * as entry from '../../../../../app/api/sendQuoteEmail/route.js'
 import type { NextRequest } from 'next/server.js'
 
