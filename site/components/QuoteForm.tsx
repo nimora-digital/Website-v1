@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, KeyboardEvent } from 'react';
@@ -12,6 +11,7 @@ type SummaryField = 'industry' | 'features' | 'contentReady' | 'timeline';
 export default function QuoteForm() {
   const [step, setStep] = useState('industry');
   const [expandedField, setExpandedField] = useState('');
+  const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [formData, setFormData] = useState({
     industry: '',
     industryOther: '',
@@ -96,19 +96,50 @@ export default function QuoteForm() {
             <h1 className="text-4xl font-serif text-gold mb-6">What type of business do you run?</h1>
             <div className="grid gap-4">
               {['Local Service', 'Creative', 'E-commerce', 'Hospitality', 'Other'].map(opt => (
-                <button key={opt} onClick={() => {
-                  if (opt === 'Other') return;
-                  setFormData({ ...formData, industry: opt });
-                  next();
-                }} className="border border-gold text-gold py-3 rounded hover:bg-gold hover:text-black transition-all">
+                <button
+                  key={opt}
+                  onClick={() => {
+                    if (opt === 'Other') {
+                      setIsOtherSelected(true);
+                      setFormData(prev => ({ ...prev, industry: '' }));
+                    } else {
+                      setIsOtherSelected(false);
+                      setFormData(prev => ({ ...prev, industry: opt }));
+                      next();
+                    }
+                  }}
+                  className={`border border-gold py-3 rounded transition-all ${
+                    (formData.industry === opt || (opt === 'Other' && isOtherSelected))
+                      ? 'bg-gold text-black'
+                      : 'text-gold hover:bg-gold hover:text-black'
+                  }`}
+                >
                   {opt}
                 </button>
               ))}
-              {formData.industry === '' && (
-                <input type="text" placeholder="Please specify" className="w-full p-3 bg-zinc-900 border border-gold rounded text-white"
-                  onChange={e => setFormData({ ...formData, industryOther: e.target.value })}
-                  onKeyDown={e => handleEnterKey(e, 'industryOther')}
-                />
+
+              {isOtherSelected && (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Please specify"
+                    value={formData.industryOther}
+                    className="w-full p-3 bg-zinc-900 border border-gold rounded text-white"
+                    onChange={e => setFormData({ ...formData, industryOther: e.target.value })}
+                    onKeyDown={e => handleEnterKey(e, 'industryOther')}
+                  />
+                  {formData.industryOther.trim() !== '' && (
+                    <button
+                      onClick={() => {
+                        setFormData(prev => ({ ...prev, industry: prev.industryOther }));
+                        next();
+                      }}
+                      className="mt-4 bg-gold text-black px-6 py-3 rounded shadow-gold hover:glow-on-hover transition-all"
+                    >
+                      Proceed
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </motion.div>
@@ -119,20 +150,29 @@ export default function QuoteForm() {
             <h1 className="text-4xl font-serif text-gold mb-6">What website integrations are you looking for?</h1>
             <div className="grid gap-4">
               {['Booking System', 'Portfolio', 'Online Payments', 'Blog', 'Quote Form', 'Just Info'].map(opt => (
-                <button key={opt} onClick={() => toggleFeature(opt)} className={`border border-gold py-3 rounded transition-all ${
-                  formData.features.includes(opt) ? 'bg-gold text-black' : 'text-gold hover:bg-gold hover:text-black'
-                }`}>
+                <button
+                  key={opt}
+                  onClick={() => toggleFeature(opt)}
+                  className={`border border-gold py-3 rounded transition-all ${
+                    formData.features.includes(opt) ? 'bg-gold text-black' : 'text-gold hover:bg-gold hover:text-black'
+                  }`}
+                >
                   {opt}
                 </button>
               ))}
-              <input type="text" placeholder="Other feature" value={formData.featureOther}
+              <input
+                type="text"
+                placeholder="Other feature"
+                value={formData.featureOther}
                 onChange={e => setFormData({ ...formData, featureOther: e.target.value })}
                 onKeyDown={e => handleEnterKey(e, 'featureOther')}
                 className="w-full p-3 bg-zinc-900 border border-gold rounded text-white"
               />
             </div>
             {formData.features.length > 0 && (
-              <button onClick={next} className="mt-6 bg-gold text-black px-6 py-3 rounded shadow-gold hover:glow-on-hover transition-all">Proceed</button>
+              <button onClick={next} className="mt-6 bg-gold text-black px-6 py-3 rounded shadow-gold hover:glow-on-hover transition-all">
+                Proceed
+              </button>
             )}
           </motion.div>
         )}
@@ -142,8 +182,11 @@ export default function QuoteForm() {
             <h1 className="text-4xl font-serif text-gold mb-6">Do you already have your content ready?</h1>
             <div className="grid gap-4">
               {['Yes, all ready', 'Some of it', 'Not yet'].map(opt => (
-                <button key={opt} onClick={() => { setFormData({ ...formData, contentReady: opt }); next(); }}
-                  className="border border-gold text-gold py-3 rounded hover:bg-gold hover:text-black transition-all">
+                <button
+                  key={opt}
+                  onClick={() => { setFormData({ ...formData, contentReady: opt }); next(); }}
+                  className="border border-gold text-gold py-3 rounded hover:bg-gold hover:text-black transition-all"
+                >
                   {opt}
                 </button>
               ))}
@@ -156,8 +199,11 @@ export default function QuoteForm() {
             <h1 className="text-4xl font-serif text-gold mb-6">When would you like to go live?</h1>
             <div className="grid gap-4">
               {['ASAP', '2–4 Weeks', '1–2 Months', 'Flexible'].map(opt => (
-                <button key={opt} onClick={() => { setFormData({ ...formData, timeline: opt }); next(); }}
-                  className="border border-gold text-gold py-3 rounded hover:bg-gold hover:text-black transition-all">
+                <button
+                  key={opt}
+                  onClick={() => { setFormData({ ...formData, timeline: opt }); next(); }}
+                  className="border border-gold text-gold py-3 rounded hover:bg-gold hover:text-black transition-all"
+                >
                   {opt}
                 </button>
               ))}
